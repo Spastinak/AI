@@ -1,11 +1,10 @@
 
 
-from boardView import clear, message, print_board
-from utils import shiftStones
+from boardView import clear, message, print_board, printWinner
+from gameController import playerFinishCheck, shiftStones
 
-
-binAmount = [6, 6, 6, 6, 6, 6, 0, 6, 6, 6, 6, 6, 6, 0]
-
+board = [6, 6, 6, 6, 6, 6, 0, 6, 6, 6, 6, 6, 6, 0]
+#board = [0,0,0,0,0,0,0,0,0,0,0,0,0,0] # test board
 playing = True
 
 playerOne = True
@@ -13,6 +12,7 @@ playerOne = True
 messageCode = 0
 
 player = "player1"
+extraTurn = False
 
 
         
@@ -22,51 +22,60 @@ while(playing):
     message(playerOne, messageCode)
     messageCode = 0
 
-    print_board(binAmount)
+    print_board(board)
     
     
     userInput = input("Enter a letter to choose a bin or enter 'QUIT' to quit the game: ")
 
+    # TODO find a better way to do this
     # why is there no switch case in python?
-    chosenBin = 0 
+    chosenPit = 0 
     if userInput == "QUIT":
         playing = False
     elif playerOne and userInput == "a":
-        chosenBin = 5
+        chosenPit = 5
     elif playerOne and userInput == "b":
-        chosenBin = 4
+        chosenPit = 4
     elif playerOne and userInput == "c":
-        chosenBin = 3
+        chosenPit = 3
     elif playerOne and userInput == "d":
-        chosenBin = 2
+        chosenPit = 2
     elif playerOne and userInput == "e":
-        chosenBin = 1
+        chosenPit = 1
     elif playerOne and userInput == "f":
-        chosenBin = 0
+        chosenPit = 0
     elif not(playerOne) and userInput == "a":
-        chosenBin = 7
+        chosenPit = 7
     elif not(playerOne) and userInput == "b":
-        chosenBin = 8
+        chosenPit = 8
     elif not(playerOne) and userInput == "c":
-        chosenBin = 9
+        chosenPit = 9
     elif not(playerOne) and userInput == "d":
-        chosenBin = 10
+        chosenPit = 10
     elif not(playerOne) and userInput == "e":
-        chosenBin = 11
+        chosenPit = 11
     elif not(playerOne) and userInput == "f":
-        chosenBin = 12
+        chosenPit = 12
     else:
-        chosenBin = -2
+        chosenPit = -2
         messageCode = -2 # invaliad input
    
-
-    binAmount = shiftStones(chosenBin, player, binAmount)
+    # TODO add a if statement to check if messagecode = -2
     
-    if player == "player1":
-        player = "player2"
-        playerOne = False
-    else:
-        player = "player1"
-        playerOne = True
+    extraTurn, board = shiftStones(chosenPit, player, board)
+    
+    if playerFinishCheck(board):
+        # TODO add methode to update the board as empty.
+        break ## someone won the game
+    
+    if not(extraTurn):
+        if player == "player1":
+            player = "player2"
+            playerOne = False
+        else:
+            player = "player1"
+            playerOne = True
 
 # end of while loop
+
+printWinner(board)

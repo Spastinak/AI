@@ -3,12 +3,12 @@ import os
 # prints the board binAmount is the the array with every stone in it
 def print_board(board):
     boardCopy = board.copy()
-    binAmount = convertBoard(boardCopy)
+    pitAmount = convertBoard(boardCopy)
     
     print("+----+----+----+----+----+----+----+----+")
-    print("|    | "+ binAmount[12] +" | "+ binAmount[11] +" | "+ binAmount[10] +" | "+ binAmount[9] +" | "+ binAmount[8] +" | "+ binAmount[7] +" |    |")
-    print("| "+ binAmount[13] +" |----+----+----+----+----+----| "+ binAmount[6] +" |")
-    print("|    | "+ binAmount[0] +" | "+ binAmount[1] +" | "+ binAmount[2] +" | "+ binAmount[3] +" | "+ binAmount[4] +" | "+ binAmount[5] +" |    |")
+    print("|    | "+ pitAmount[12] +" | "+ pitAmount[11] +" | "+ pitAmount[10] +" | "+ pitAmount[9] +" | "+ pitAmount[8] +" | "+ pitAmount[7] +" |    |")
+    print("| "+ pitAmount[13] +" |----+----+----+----+----+----| "+ pitAmount[6] +" |")
+    print("|    | "+ pitAmount[0] +" | "+ pitAmount[1] +" | "+ pitAmount[2] +" | "+ pitAmount[3] +" | "+ pitAmount[4] +" | "+ pitAmount[5] +" |    |")
     print("+----+----+----+----+----+----+----+----+")
     print("        f    e    d    c    b    a\n")
 
@@ -28,22 +28,31 @@ def message(playerOne, messageCode):
     elif not(playerOne) and messageCode == 0:
         message = "\nPlayer two's turn.\n"
     elif messageCode == -2:
-        message = "\invalid input. Try again.\n"
+        message = "\ninvalid input. Try again.\n"
     elif messageCode == -1:
         message = "\nChoose a non-empty bin idiot.\n"
     print(message)
   
     
 # convert the board to strings for use in print_Board
-def convertBoard(binAmount):
+def convertBoard(pitAmount):
     i = 0
     # convert the binAmount to strings
-    for element in binAmount: 
-        binAmount[i] = int(binAmount[i]) # remove extra spaces
-        if int(binAmount[i]) < 10:
-            binAmount[i] = " " + str(binAmount[i]) # if binAmount is a single diget 
+    for element in pitAmount: 
+        pitAmount[i] = int(pitAmount[i]) # remove extra spaces
+        if int(pitAmount[i]) < 10:
+            pitAmount[i] = " " + str(pitAmount[i]) # if binAmount is a single diget 
         else :
-            binAmount[i] = str(binAmount[i]) # double diget
+            pitAmount[i] = str(pitAmount[i]) # double diget
         i += 1
     # end of the for loop
-    return binAmount
+    return pitAmount
+
+def printWinner(board):
+    if (board[13] > board[6]):
+        print("AI is the winner")
+    elif (board[13] < board[6]):
+        print("You are the winner")
+    else:
+        print("Draw")
+    print_board(board)
