@@ -1,6 +1,6 @@
 
 # TODO add check if selected pit is empty
-def shiftStones(pit, player, board):
+def shiftStones(pit, player, board, messageCode):
     
     boardCopy = board.copy() # copy board for safty
     # define player bins
@@ -15,40 +15,44 @@ def shiftStones(pit, player, board):
         availablePits = player2Pits
     
     stonesNumber = boardCopy[pit]
-    boardCopy[pit] = 0
-    
-    for x in range(stonesNumber):
-        pit += 1
-        if pit > 13:
-            pit = 0
-            
-        if ( (player == "player1" and pit == 13) or (player == "player2" and pit == 6)):
+    if not(stonesNumber == 0):
+        boardCopy[pit] = 0
+        
+        for x in range(stonesNumber):
             pit += 1
-        boardCopy[pit] += 1
-    
-    if (boardCopy[pit] == 1) and (pit in availablePits):
-        if player == "player1":
-            boardCopy[6] += boardCopy[pit]
-            boardCopy[pit] = 0
+            if pit > 13:
+                pit = 0
+                
+            if ( (player == "player1" and pit == 13) or (player == "player2" and pit == 6)):
+                pit += 1
+            boardCopy[pit] += 1
+        
+        if (boardCopy[pit] == 1) and (pit in availablePits):
+            if player == "player1":
+                boardCopy[6] += boardCopy[pit]
+                boardCopy[pit] = 0
+                
+                oppositeIndex = player1Pits.index(pit)
+                oppositePitNumber = player2Pits[oppositeIndex]
+                boardCopy[6] += boardCopy[oppositePitNumber]
+                boardCopy[oppositePitNumber] = 0
             
-            oppositeIndex = player1Pits.index(pit)
-            oppositePitNumber = player2Pits[oppositeIndex]
-            boardCopy[6] += boardCopy[oppositePitNumber]
-            boardCopy[oppositePitNumber] = 0
-        
-        else: 
-            boardCopy[0] += boardCopy[pit]
-            boardCopy[pit] = 0
+            else: 
+                boardCopy[0] += boardCopy[pit]
+                boardCopy[pit] = 0
+                
+                oppositeIndex = player2Pits.index(pit)
+                oppositePitNumber = player1Pits[oppositeIndex]
+                boardCopy[13] += boardCopy[oppositePitNumber]
+                boardCopy[oppositePitNumber] = 0
             
-            oppositeIndex = player2Pits.index(pit)
-            oppositePitNumber = player1Pits[oppositeIndex]
-            boardCopy[13] += boardCopy[oppositePitNumber]
-            boardCopy[oppositePitNumber] = 0
-        
-    if ( pit == 6 and player == "player1") or (pit == 13 and player == "player2"):
-        extraTurn = True
-        
-    return extraTurn, boardCopy
+        if ( pit == 6 and player == "player1") or (pit == 13 and player == "player2"):
+            extraTurn = True
+            
+        return extraTurn, boardCopy, messageCode
+    else:
+        messageCode = -1
+        return extraTurn, boardCopy, messageCode
 
 # check if either of the two board side pits are empty 
 def playerFinishCheck(board):
