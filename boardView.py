@@ -21,11 +21,11 @@ def clear():
     os.system(command)
     
     
-def message(playerOne, messageCode):
+def message(player, messageCode):
     message = ""
-    if playerOne and messageCode == 0:
+    if player == "player1" and messageCode == 0:
         message = "\nPlayer one's turn.\n"
-    elif not(playerOne) and messageCode == 0:
+    elif player == "player2" and messageCode == 0:
         message = "\nPlayer two's turn.\n"
     elif messageCode == -2:
         message = "\ninvalid input. Try again.\n"
