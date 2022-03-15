@@ -12,3 +12,12 @@ class Choice():
     def __str__(self) -> str:
         return self.move + ": " + str(self.value)
         
+def eval(board):
+    player1seeds = board[6]
+    player2seeds = board[13]
+
+    
+
+    return player1house-player2house
+
+    
