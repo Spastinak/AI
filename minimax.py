@@ -11,4 +11,3 @@ class Choice():
 
     def __str__(self) -> str:
         return self.move + ": " + str(self.value)
-        
