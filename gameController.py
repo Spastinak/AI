@@ -1,12 +1,12 @@
 
-# TODO add check if selected pit is empty
+player1Pits = [0, 1, 2, 3, 4, 5]
+player2Pits = [12, 11, 10, 9, 8, 7]
+
 def shiftStones(pit, player, board, messageCode):
     
     boardCopy = board.copy() # copy board for safty
     # define player bins
-    player1Pits = [0, 1, 2, 3, 4, 5]
-    player2Pits = [12, 11, 10, 9, 8, 7] #[7, 8, 9, 10, 11, 12] maybe this list needs to be reversed
-    
+
     extraTurn = False
     availablePits = 0 
     if player == "player1":
@@ -57,7 +57,7 @@ def shiftStones(pit, player, board, messageCode):
 # check if either of the two board side pits are empty 
 def playerFinishCheck(board):
     
-    pits = [[0, 1, 2, 3, 4, 5],[12, 11, 10, 9, 8, 7]]
+    pits = [player1Pits,player2Pits]
     for pitList in pits:
         sum = 0
         for x in pitList:
@@ -68,8 +68,6 @@ def playerFinishCheck(board):
     return False
 
 def endBoard(player, board):
-    player1Pits = [0, 1, 2, 3, 4, 5]
-    player2Pits = [12, 11, 10, 9, 8, 7]
     if player == "player1":
         for x in player2Pits:
             board[13] += board[x]
