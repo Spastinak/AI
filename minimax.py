@@ -13,12 +13,8 @@ class Choice():
         return self.move + ": " + str(self.value)
         
 def eval(board):
-    player1seeds
-    player2seeds 
-
-    for i in range(6):
-        player1seeds = board[i]
-        player2seeds = board[i + 7]
+    player1stones = board[6]
+    player2stones = board[13]  
 
     return player1seeds-player2seeds
 
