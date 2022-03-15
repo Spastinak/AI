@@ -29,7 +29,7 @@ while(playing):
         extraTurn, board, messageCode = shiftStones(chosenPit, player, board, messageCode)
         if not(messageCode == -1):
             # someone won the game
-            if playerFinishCheck(board): 
+            if playerFinishCheck(board):
                 endBoard(player, board)
                 playing = False
             

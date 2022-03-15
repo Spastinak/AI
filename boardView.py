@@ -30,7 +30,7 @@ def message(player, messageCode):
     elif messageCode == -2:
         message = "\ninvalid input. Try again.\n"
     elif messageCode == -1:
-        message = "\nChoose a non-empty bin idiot.\n"
+        message = "\nChoose a non-empty pit, you silly human.\n"
     print(message)
   
     
