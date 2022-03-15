@@ -16,6 +16,6 @@ def eval(board):
     player1stones = board[6]
     player2stones = board[13]  
 
-    return player1seeds-player2seeds
+    return player1stones-player2stones
 
     
