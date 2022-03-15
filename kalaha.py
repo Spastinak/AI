@@ -1,10 +1,10 @@
 
 
 from boardView import clear, message, print_board, printWinner
-from gameController import playerFinishCheck, shiftStones
+from gameController import endBoard, playerFinishCheck, shiftStones
 
 board = [6, 6, 6, 6, 6, 6, 0, 6, 6, 6, 6, 6, 6, 0]
-#board = [0,0,0,0,0,0,0,0,0,0,0,0,0,0] # test board
+#board = [0,0,0,0,0,1,0,0,0,0,0,12,0,0] # test board
 playing = True
 
 playerOne = True
@@ -64,9 +64,10 @@ while(playing):
     
     extraTurn, board = shiftStones(chosenPit, player, board)
     
-    if playerFinishCheck(board):
-        # TODO add methode to update the board as empty.
-        break ## someone won the game
+    # someone won the game
+    if playerFinishCheck(board): 
+        endBoard(player, board)
+        playing = False
     
     if not(extraTurn):
         if player == "player1":

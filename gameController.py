@@ -62,3 +62,15 @@ def playerFinishCheck(board):
         if sum == 6:
             return True
     return False
+
+def endBoard(player, board):
+    player1Pits = [0, 1, 2, 3, 4, 5]
+    player2Pits = [12, 11, 10, 9, 8, 7]
+    if player == "player1":
+        for x in player2Pits:
+            board[13] += board[x]
+            board[x] = 0
+    if player == "player2":
+        for x in player1Pits:
+            board[6] += board[x]
+            board[x] = 0

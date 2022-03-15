@@ -49,10 +49,11 @@ def convertBoard(pitAmount):
     return pitAmount
 
 def printWinner(board):
+    clear()
     if (board[13] > board[6]):
-        print("AI is the winner")
+        print("\nAI is the winner\n")
     elif (board[13] < board[6]):
-        print("You are the winner")
+        print("\nYou are the winner\n")
     else:
-        print("Draw")
+        print("\nDraw\n")
     print_board(board)
