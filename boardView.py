@@ -26,7 +26,7 @@ def message(player, messageCode):
     if player == "player1" and messageCode == 0:
         message = "\nPlayer one's turn.\n"
     elif player == "player2" and messageCode == 0:
-        message = "\nAI's turn.\n"
+        message = "\nAI is thinking...\n"
     elif messageCode == -2:
         message = "\ninvalid input. Try again.\n"
     elif messageCode == -1:
