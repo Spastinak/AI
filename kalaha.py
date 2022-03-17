@@ -25,25 +25,21 @@ while(playing):
     if (player == "player2"):
         bestMove = getBestMove(board)
         extraTurn, board, messageCode = shiftStones(bestMove, player, board, messageCode)
-        if (not(extraTurn)):
+        if (player != extraTurn):
             player = nextplayer(player)
 
         if (messageCode == 1):
             clear()
             print_board(board)
-            playing = False
-        
+            playing = False   
+            
     else:
         userInput = input("Enter a letter to choose a pit or enter 'QUIT' to quit the game: ")
         chosenPit, messageCode, playing = playerInput(userInput, player, messageCode, playing)
         if (not(messageCode == -2) or not(playing)):
             extraTurn, board, messageCode = shiftStones(chosenPit, player, board, messageCode)
-            if not(messageCode == -1):  
-                if not(extraTurn):
-                    if player == "player1":
-                        player = "player2"
-                    else:
-                        player = "player1"
+            if (player != extraTurn):
+                player = nextplayer(player)
             if (messageCode == 1):
                 clear()
                 print_board(board)

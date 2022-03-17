@@ -31,30 +31,30 @@ def getBestMove(board):
     for i in player2Pits:
         if (not(board[i] == 0)):
             boardCopy = board.copy()
-            aiPlayer, boardCopy, messageCode = shiftStones(i,"player2", boardCopy, 0)
-            evaluation = minimax(boardCopy, aiPlayer, 10, alpha, beta)
+            player, boardCopy, messageCode,  = shiftStones(i,"player2", boardCopy, 0)
+            evaluation = minimax(boardCopy, player, 10, alpha, beta, )
             if (evaluation > maxEval):
                 maxEval = evaluation
                 bestMove = i
     return bestMove
 
     
-def minimax(board, aiPlayer, depth, alpha, beta):
+def minimax(board, player, depth, alpha, beta, ):
     minint = -sys.maxsize - 1
 
     if (depth == 0 or playerFinishCheck(board)):
         evaluation = eval(board)
         return evaluation
 
-    if (aiPlayer):
+    if (player == "player2"):
         maxEval = minint
 
         for i in player2Pits:
             if (not(board[i] == 0)):
                 boardClone = board.copy()
-                aiPlayer, boardClone, messageCode = shiftStones(i,"player2", boardClone, 0)
+                player, boardClone, messageCode  = shiftStones(i,"player2", boardClone, 0)
 
-                evaluation = minimax(boardClone, aiPlayer , depth-1, alpha, beta)
+                evaluation = minimax(boardClone, player , depth-1, alpha, beta, )
 
                 if (evaluation > maxEval):
                     maxEval = evaluation
@@ -72,9 +72,9 @@ def minimax(board, aiPlayer, depth, alpha, beta):
         for i in player1Pits:
             if (not(board[i] == 0)):
                 boardClone = board.copy()
-                aiPlayer, boardClone, messageCode = shiftStones(i,"player1", boardClone, 0)
+                player, boardClone, messageCode = shiftStones(i,"player1", boardClone, 0)
 
-                evaluation = minimax(boardClone, aiPlayer , depth-1, alpha, beta)
+                evaluation = minimax(boardClone, player , depth-1, alpha, beta)
 
                 if (evaluation < minEval):
                     minEval = evaluation
