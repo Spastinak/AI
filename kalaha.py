@@ -28,7 +28,7 @@ while(playing):
         if (not(extraTurn)):
             player = nextplayer(player)
         if playerFinishCheck(board):
-                endBoard(player, board)
+                endBoard(board)
                 playing = False
                 clear()
                 print_board(board)
@@ -41,7 +41,7 @@ while(playing):
             if not(messageCode == -1):
                 # someone won the game
                 if playerFinishCheck(board):
-                    endBoard(player, board)
+                    endBoard(board)
                     playing = False
                     clear()
                     print_board(board)

@@ -23,7 +23,7 @@ def shiftStones(pit, player, board, messageCode):
 
             if ( (player == "player1" and pit == 13) or (player == "player2" and pit == 6)):
                 pit += 1
-                
+
             if pit > 13:
                 pit = 0 
             
@@ -69,15 +69,14 @@ def playerFinishCheck(board):
             return True
     return False
 
-def endBoard(player, board):
-    if player == "player1":
-        for x in player2Pits:
-            board[13] += board[x]
-            board[x] = 0
-    if player == "player2":
-        for x in player1Pits:
-            board[6] += board[x]
-            board[x] = 0
+def endBoard( board):
+    for x in player2Pits:
+        board[13] += board[x]
+        board[x] = 0
+
+    for x in player1Pits:
+        board[6] += board[x]
+        board[x] = 0
             
 def playerInput(userInput, player, messageCode, playing):
     chosenPit = 0 

@@ -12,11 +12,11 @@ def eval(board):
     player1stones = board[6]
     player2stones = board[13]  
 
-    # for i in range(6):
-    #     player1stones += board[i]
-    #     player2stones += board[i+7]
+    for i in range(6):
+        player1stones += board[i]
+        player2stones += board[i+7]
 
-    return player1stones-player2stones
+    return player2stones-player1stones
 
 
 def getBestMove(board):
@@ -32,7 +32,7 @@ def getBestMove(board):
         if (not(board[i] == 0)):
             boardCopy = board.copy()
             aiPlayer, boardCopy, messageCode = shiftStones(i,"player2", boardCopy, 0)
-            evaluation = minimax(boardCopy, aiPlayer, 7, alpha, beta)
+            evaluation = minimax(boardCopy, aiPlayer, 10, alpha, beta)
             if (evaluation > maxEval):
                 maxEval = evaluation
                 bestMove = i
@@ -52,7 +52,7 @@ def minimax(board, aiPlayer, depth, alpha, beta):
         for i in player2Pits:
             if (not(board[i] == 0)):
                 boardClone = board.copy()
-                aiPlayer, boardCopy, messageCode = shiftStones(i,"player2", boardClone, 0)
+                aiPlayer, boardClone, messageCode = shiftStones(i,"player2", boardClone, 0)
 
                 evaluation = minimax(boardClone, aiPlayer , depth-1, alpha, beta)
 
@@ -72,7 +72,7 @@ def minimax(board, aiPlayer, depth, alpha, beta):
         for i in player1Pits:
             if (not(board[i] == 0)):
                 boardClone = board.copy()
-                aiPlayer, boardCopy, messageCode = shiftStones(i,"player1", boardClone, 0)
+                aiPlayer, boardClone, messageCode = shiftStones(i,"player1", boardClone, 0)
 
                 evaluation = minimax(boardClone, aiPlayer , depth-1, alpha, beta)
 
