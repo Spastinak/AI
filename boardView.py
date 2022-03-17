@@ -24,7 +24,7 @@ def clear():
 def message(player, messageCode):
     message = ""
     if player == "player1" and messageCode == 0:
-        message = "\nPlayer one's turn.\n"
+        message = "\nYour turn.\n"
     elif player == "player2" and messageCode == 0:
         message = "\nAI is thinking...\n"
     elif messageCode == -2:
