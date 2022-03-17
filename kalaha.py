@@ -27,30 +27,27 @@ while(playing):
         extraTurn, board, messageCode = shiftStones(bestMove, player, board, messageCode)
         if (not(extraTurn)):
             player = nextplayer(player)
-        if playerFinishCheck(board):
-                endBoard(board)
-                playing = False
-                clear()
-                print_board(board)
+
+        if (messageCode == 1):
+            clear()
+            print_board(board)
+            playing = False
         
     else:
         userInput = input("Enter a letter to choose a pit or enter 'QUIT' to quit the game: ")
         chosenPit, messageCode, playing = playerInput(userInput, player, messageCode, playing)
         if (not(messageCode == -2) or not(playing)):
             extraTurn, board, messageCode = shiftStones(chosenPit, player, board, messageCode)
-            if not(messageCode == -1):
-                # someone won the game
-                if playerFinishCheck(board):
-                    endBoard(board)
-                    playing = False
-                    clear()
-                    print_board(board)
-                
+            if not(messageCode == -1):  
                 if not(extraTurn):
                     if player == "player1":
                         player = "player2"
                     else:
                         player = "player1"
+            if (messageCode == 1):
+                clear()
+                print_board(board)
+                playing = False
     
     
 # end of while loop

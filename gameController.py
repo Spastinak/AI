@@ -51,6 +51,10 @@ def shiftStones(pit, player, board, messageCode):
         if ( pit == 6 and player == "player1") or (pit == 13 and player == "player2"):
             extraTurn = True
             
+        if playerFinishCheck(boardCopy):
+            boardCopy = endBoard(boardCopy)
+            messageCode = 1
+                
         return extraTurn, boardCopy, messageCode
     else:
         messageCode = -1
@@ -69,14 +73,16 @@ def playerFinishCheck(board):
             return True
     return False
 
-def endBoard( board):
+def endBoard(board):
+    boardCopy = board.copy()
     for x in player2Pits:
-        board[13] += board[x]
-        board[x] = 0
+        boardCopy[13] += boardCopy[x]
+        boardCopy[x] = 0
 
     for x in player1Pits:
-        board[6] += board[x]
-        board[x] = 0
+        boardCopy[6] += boardCopy[x]
+        boardCopy[x] = 0
+    return boardCopy
             
 def playerInput(userInput, player, messageCode, playing):
     chosenPit = 0 
