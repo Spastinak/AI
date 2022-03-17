@@ -25,7 +25,8 @@ while(playing):
     if (player == "player2"):
         bestMove = getBestMove(board)
         extraTurn, board, messageCode = shiftStones(bestMove, player, board, messageCode)
-        player = nextplayer(player)
+        if (not(extraTurn)):
+            player = nextplayer(player)
         if playerFinishCheck(board):
                 endBoard(player, board)
                 playing = False

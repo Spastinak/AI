@@ -12,9 +12,9 @@ def eval(board):
     player1stones = board[6]
     player2stones = board[13]  
 
-    for i in range(6):
-        player1stones += board[i]
-        player2stones += board[i+7]
+    # for i in range(6):
+    #     player1stones += board[i]
+    #     player2stones += board[i+7]
 
     return player1stones-player2stones
 
