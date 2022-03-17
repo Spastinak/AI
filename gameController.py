@@ -20,11 +20,13 @@ def shiftStones(pit, player, board, messageCode):
         
         for x in range(stonesNumber):
             pit += 1
-            if pit > 13:
-                pit = 0
-                
+
             if ( (player == "player1" and pit == 13) or (player == "player2" and pit == 6)):
                 pit += 1
+                
+            if pit > 13:
+                pit = 0 
+            
             boardCopy[pit] += 1
         
         if (boardCopy[pit] == 1) and (pit in availablePits):
@@ -109,3 +111,10 @@ def playerInput(userInput, player, messageCode, playing):
         chosenPit = -2
         messageCode = -2 # invaliad input
     return chosenPit, messageCode, playing
+
+def nextplayer(player):
+    if (player == "player1"):
+        player = "player2"
+    else:
+        player = "player1"
+    return player
