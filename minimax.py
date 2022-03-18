@@ -49,7 +49,7 @@ def getBestMove(board):
         if (not(board[i] == 0)):
             boardCopy = board.copy()
             player, boardCopy, messageCode,  = shiftStones(i,"player2", boardCopy, 0)
-            evaluation = minimax(boardCopy, player, 10, alpha, beta, )
+            evaluation = minimax(boardCopy, player, 9, alpha, beta, )
             if (evaluation > maxEval):
                 maxEval = evaluation
                 bestMove = i
