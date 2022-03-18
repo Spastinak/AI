@@ -51,7 +51,7 @@ def shiftStones(pit, player, board, messageCode):
         if ( pit == 6 and player == "player1") or (pit == 13 and player == "player2"):
             extraTurn = True
             
-        if playerFinishCheck(boardCopy):
+        if goalTest(boardCopy):
             boardCopy = endBoard(boardCopy)
             messageCode = 1
 
@@ -70,7 +70,7 @@ def shiftStones(pit, player, board, messageCode):
         return player, boardCopy, messageCode
 
 # check if either of the two board side pits are empty 
-def playerFinishCheck(board):
+def goalTest(board):
     
     pits = [player1Pits,player2Pits]
     for pitList in pits:
