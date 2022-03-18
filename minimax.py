@@ -9,14 +9,31 @@ player1Pits = [0, 1, 2, 3, 4, 5]
 player2Pits = [12, 11, 10, 9, 8, 7]
         
 def eval(board):
-    player1stones = board[6]
-    player2stones = board[13]  
 
-    for i in range(6):
-        player1stones += board[i]
-        player2stones += board[i+7]
+    player1points = board[6]*4
+    player2points = board[13]*4
+    for i in player1Pits:
+        if board[i] == 13:
+            player1points += 4
+        elif board[i]+i == 6:
+            player1points += 1
+        elif board[i] == 0:
+            player1points += 1
 
-    return player2stones-player1stones
+    for i in player2Pits:
+        if board[i] == 13:
+            player1points += 4
+        elif board[i] + i == 13:
+            player1points += 1
+        elif board[i] == 0:
+            player1points += 1
+
+
+    # for i in range(6):
+    #     player1stones += board[i]
+    #     player2stones += board[i+7]
+    #return player2stones-player1stones
+    return player2points-player1points
 
 
 def getBestMove(board):
