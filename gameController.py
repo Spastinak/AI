@@ -109,18 +109,6 @@ def playerInput(userInput, player, messageCode, playing):
         chosenPit = 1
     elif player == "player1" and userInput == "f":
         chosenPit = 0
-    elif player == "player2" and userInput == "a":
-        chosenPit = 7
-    elif player == "player2" and userInput == "b":
-        chosenPit = 8
-    elif player == "player2" and userInput == "c":
-        chosenPit = 9
-    elif player == "player2" and userInput == "d":
-        chosenPit = 10
-    elif player == "player2" and userInput == "e":
-        chosenPit = 11
-    elif player == "player2" and userInput == "f":
-        chosenPit = 12
     else:
         chosenPit = -2
         messageCode = -2 # invaliad input
