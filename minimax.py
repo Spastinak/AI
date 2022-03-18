@@ -2,7 +2,7 @@
 
 import sys
 from boardView import message
-from gameController import playerFinishCheck, shiftStones
+from gameController import goalTest, shiftStones
 
 
 player1Pits = [0, 1, 2, 3, 4, 5]
@@ -59,7 +59,7 @@ def getBestMove(board):
 def minimax(board, player, depth, alpha, beta, ):
     minint = -sys.maxsize - 1
 
-    if (depth == 0 or playerFinishCheck(board)):
+    if (depth == 0 or goalTest(board)):
         evaluation = eval(board)
         return evaluation
 

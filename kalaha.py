@@ -2,7 +2,7 @@
 
 from webbrowser import get
 from boardView import clear, message, print_board, printWinner
-from gameController import endBoard, nextplayer, playerFinishCheck, playerInput, shiftStones
+from gameController import endBoard, nextplayer, goalTest, playerInput, shiftStones
 from minimax import getBestMove
 
 board = [6, 6, 6, 6, 6, 6, 0, 6, 6, 6, 6, 6, 6, 0]
